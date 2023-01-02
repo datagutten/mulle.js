@@ -21,7 +21,7 @@
 	"devDependencies": {
 		"@babel/core": "^7.0.0",
 		"@babel/preset-env": "^7.10.4",
-		"babel-loader": "^8.0.0",
+		"babel-loader": "^8.3.0",
 		"eslint": "^7.5.0",
 	  	"free-tex-packer-core": "^0.3.4",
 		"phaser-ce": "^2.9.1",
