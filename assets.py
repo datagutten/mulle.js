@@ -11,9 +11,10 @@ from PyTexturePacker import Packer
 from PyTexturePacker import Utils as PyTexturePackerUtils
 
 from audiosprite import AudioSprite
-from build_scripts.parse_animation_chart import parse_animation_chart
 from build_scripts.MulleResource import MulleResource
+from build_scripts.convert_image import convert_image
 from build_scripts.data import director_data
+from build_scripts.parse_animation_chart import parse_animation_chart
 
 optimizeImages = int(sys.argv[1])
 
@@ -349,9 +350,9 @@ for res in MulleResources:
                 continue
 
             if f['num'] in opaque:
-                call(["magick", "convert", fileBasePath + '.bmp', fileBasePath + '.png'])
+                convert_image(fileBasePath + '.bmp', False)
             else:
-                call(["magick", "convert", fileBasePath + '.bmp', "-transparent", "#FFFFFF", fileBasePath + '.png'])
+                convert_image(fileBasePath + '.bmp')
 
             filePath = fileBasePath + ".png"
 

@@ -75,13 +75,6 @@ jobs:
           sudo cp /var/cache/apt/*.bin /tmp/apt
           sudo cp -r /var/cache/apt/archives/*.deb /tmp/apt/archives
 
-      - name: Install imagemagick
-        run: |
-          sudo add-apt-repository universe
-          sudo apt install libfuse2
-          deployment/imagemagick.sh
-          echo "$PWD/bin" >> $GITHUB_PATH
-
       - run: npm install
 
       - run: pip install -r requirements.txt
