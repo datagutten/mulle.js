@@ -77,6 +77,8 @@ jobs:
 
       - name: Install imagemagick
         run: |
+          sudo add-apt-repository universe
+          sudo apt install libfuse2
           deployment/imagemagick.sh
           echo "$PWD/bin" >> $GITHUB_PATH
 
