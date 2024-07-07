@@ -17,20 +17,20 @@ jobs:
 
     steps:
       - name: Checkout project
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4
 
       - name: Use Node.js 14.x
-        uses: actions/setup-node@v2
+        uses: actions/setup-node@v4
         with:
           node-version: 14.x
 
       - name: Set up Python
-        uses: actions/setup-python@v2
+        uses: actions/setup-python@v5
         with:
           python-version: 3.9
 
       - name: Cache data
-        uses: actions/cache@v2
+        uses: actions/cache@v4
         id: iso
         with:
           path: build_scripts/iso/mullebil_${{ matrix.language }}.iso
@@ -38,7 +38,7 @@ jobs:
           restore-keys: game-iso-${{ matrix.language }}-
 
       - name: Cache binaries
-        uses: actions/cache@v2
+        uses: actions/cache@v4
         id: bin
         with:
           path: bin
@@ -46,7 +46,7 @@ jobs:
           restore-keys: bin-
 
       - name: Cache APT packages
-        uses: actions/cache@v2
+        uses: actions/cache@v4
         id: apt
         with:
           path: /tmp/apt
@@ -100,7 +100,7 @@ jobs:
       - name: Build assets
         run: python build_scripts/build.py ${{ matrix.language }} assets
 
-      - uses: actions/upload-artifact@v2
+      - uses: actions/upload-artifact@v4
         with:
           name: dist-${{ matrix.language }}
           path: dist

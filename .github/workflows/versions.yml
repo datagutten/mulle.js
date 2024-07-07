@@ -18,18 +18,18 @@ jobs:
       fail-fast: false
       matrix:
         node-version: [ 16, 18, 20 ]
-        python-version: [ 3.8, 3.9 ]
+        python-version: [ "3.9", "3.10", "3.12" ]
         os: [ ubuntu-latest, windows-latest ]
         # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
 
     steps:
-    - uses: actions/checkout@v2
+    - uses: actions/checkout@v4
     - name: Use Node.js ${{ matrix.node-version }}
       uses: actions/setup-node@v4
       with:
         node-version: ${{ matrix.node-version }}
     - name: Set up Python
-      uses: actions/setup-python@v2
+      uses: actions/setup-python@v5
       with:
         python-version: ${{ matrix.python-version }}
 
@@ -37,7 +37,7 @@ jobs:
       id: npm-cache-dir
       run: |
         echo "::set-output name=dir::$(npm config get cache)"
-    - uses: actions/cache@v2
+    - uses: actions/cache@v4
       id: npm-cache # use this to check for `cache-hit` ==> if: steps.npm-cache.outputs.cache-hit != 'true'
       with:
         path: ${{ steps.npm-cache-dir.outputs.dir }}
@@ -46,7 +46,7 @@ jobs:
           ${{ runner.os }}-node-
 
     - name: Cache binaries
-      uses: actions/cache@v2
+      uses: actions/cache@v4
       id: bin
       with:
         path: bin
