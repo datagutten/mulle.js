@@ -5,8 +5,8 @@
 	"main": "index.js",
 	"scripts": {
 		"build": "python3 build_scripts/build.py build",
-	  	"build-prod": "python3 build_scripts/build.py build-prod",
-	  	"clean": "python3 build_scripts/cleanup.py",
+		"build-prod": "python3 build_scripts/build.py build-prod",
+		"clean": "python3 build_scripts/cleanup.py",
 		"start": "webpack serve --config webpack.dev.js",
 		"start-prod": "webpack serve --config webpack.prod.js",
 		"server": "node server/server.js"
@@ -23,7 +23,7 @@
 		"@babel/preset-env": "^7.10.4",
 		"babel-loader": "^8.0.0",
 		"eslint": "^7.5.0",
-	  	"free-tex-packer-core": "^0.3.4",
+	  	"free-tex-packer-core": "github:astrocreep/free-tex-packer-core",
 		"phaser-ce": "^2.9.1",
 		"readline": "^1.3.0",
 		"terser-webpack-plugin": "^3.1.0",
