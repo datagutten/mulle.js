@@ -4,14 +4,15 @@ import sys
 from PIL import Image
 
 
-def convert_image(file, transparent=True, output_folder=None):
+def convert_image(file, transparent=True, output_folder=None, output_file=None):
     filename, extension = os.path.splitext(file)
     im = Image.open(file)
-    if not output_folder:
-        output_file = filename + '.png'
-    else:
-        file = os.path.basename(filename) + '.png'
-        output_file = os.path.join(output_folder, file)
+    if not output_file:
+        if not output_folder:
+            output_file = filename + '.png'
+        else:
+            file = os.path.basename(filename) + '.png'
+            output_file = os.path.join(output_folder, file)
 
     if transparent:
         rgba = im.convert("RGBA")
