@@ -1,6 +1,11 @@
 'use strict'
 
-var MapObject = {}
+/**
+ *
+ * @type {{MapObject}}
+ * Map 7, 15, 23
+ */
+const MapObject = {}
 
 MapObject.onCreate = function () {
   this.animationHelper.add('idle', 'normal', 1, 12, true)
@@ -20,25 +25,21 @@ MapObject.onCreate = function () {
   this.animations.play('idle')
 }
 
-MapObject.onEnterOuter = function (car) {
-
-}
-
 MapObject.onEnterInner = function (car) {
-  var allowed = this.game.mulle.user.Car.getProperty('horntype', 0) >= 1
+  const allowed = this.game.mulle.user.Car.getProperty('horntype', 0) >= 1
 
-  var horns = ['05e050v0', '05e049v0', '05e044v0', '05e042v0', '05d013v0']
+  const horns = ['05e050v0', '05e049v0', '05e044v0', '05e042v0', '05d013v0']
 
   if (allowed) {
     this.animations.play('parting')
 
     if (!this.playedSound) {
-      this.game.mulle.playAudio(horns[ this.game.mulle.user.Car.getProperty('horntype', 0) - 1 ])
+      this.game.mulle.playAudio(horns[this.game.mulle.user.Car.getProperty('horntype', 0) - 1])
 
       this.playedSound = true
 
-      const audio_allowed = this.game.mulle.playAudio('31e001v0')
-      audio_allowed.onStop.addOnce(() => {
+      const sound = this.game.mulle.playAudio(this.def.Sounds[1])
+      sound.onStop.addOnce(() => {
         this.playedSound = null
       })
     }
@@ -46,8 +47,8 @@ MapObject.onEnterInner = function (car) {
     if (!this.playedSound) {
       this.playedSound = true
 
-      const audio_error = this.game.mulle.playAudio('31d001v0')
-      audio_error.onStop.addOnce(() => {
+      const error_sound = this.game.mulle.playAudio(this.def.Sounds[0])
+      error_sound.onStop.addOnce(() => {
         this.playedSound = null
       })
     }
@@ -60,6 +61,11 @@ MapObject.onEnterInner = function (car) {
 
 MapObject.onExitInner = function () {
   this.animations.play('gathering')
+
+}
+
+MapObject.onExitOuter = function () {
+  this.game.mulle.stopAudio(this.def.Sounds[1]);
 }
 
 export default MapObject

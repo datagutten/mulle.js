@@ -5,7 +5,7 @@ import ObjectAnimation from './animation'
 /**
  *
  * @type {{MapObject}}
- * Map 5
+ * Map 5, 18
  */
 const MapObject = {}
 
@@ -51,8 +51,8 @@ MapObject.onEnterInner = function (car) {
     if (!this.playedSound) {
       this.playedSound = true
 
-      const sound = this.game.mulle.playAudio(this.def.Sounds[0])
-      sound.onStop.addOnce(() => {
+      const error_sound = this.game.mulle.playAudio(this.def.Sounds[0])
+      error_sound.onStop.addOnce(() => {
         this.playedSound = null
       })
     }
@@ -63,12 +63,12 @@ MapObject.onEnterInner = function (car) {
   }
 }
 
-MapObject.onExitInner = function (car) {
+MapObject.onExitInner = function () {
   this.animations.play('gathering')
 
 }
 
-MapObject.onExitOuter = function (car) {
+MapObject.onExitOuter = function () {
   this.game.mulle.stopAudio(this.def.Sounds[1]);
 }
 
