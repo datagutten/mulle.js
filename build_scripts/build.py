@@ -256,7 +256,6 @@ class Build:
         convert_image(loading_file, output_file=output_file)
 
     def topography(self):
-        subprocess.run([sys.executable, os.path.join(self.script_folder, 'topography.py')])
         source = os.path.join(self.extract_folder, 'CDDATA.CXT', 'Standalone')
         topography_dir = os.path.join(self.dist_folder, 'assets', 'topography')
         if not os.path.exists(topography_dir):
