@@ -85,7 +85,7 @@ class MulleGame extends Phaser.Game {
 
     this.mulle.networkEnabled = true
 
-    this.mulle.networkServer = 'mulle.dongers.net:8765'
+    this.mulle.networkServer = 'mulle.datagutten.net:8765'
     this.mulle.networkDevServer = 'localhost:8765'
 
     this.mulle.defaultLanguage = 'english'
