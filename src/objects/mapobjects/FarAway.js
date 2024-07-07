@@ -8,9 +8,10 @@
 var MapObject = {}
 
 MapObject.onEnterInner = function () {
-  // TODO: Far away sound
+  // TODO: Cutscene?
   const hasMedal = this.game.mulle.user.Car.hasMedal(2)
   if (!hasMedal) {
+    this.game.mulle.playAudio('05d010v0')
     this.game.mulle.user.Car.addMedal(2)
   }
 }
