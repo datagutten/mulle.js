@@ -1,7 +1,7 @@
 const WebSocket = require('ws')
 const readline = require('readline')
 const moment = require('moment')
-// const colors = require('colors')
+const colors = require('colors')
 
 const rlCli = readline.createInterface({
   input: process.stdin,
@@ -107,7 +107,7 @@ class MulleServer {
 
     // client connection
     this.wss.on('connection', (ws, req) => {
-      const clientIP = req.connection.remoteAddress
+      const clientIP = req.socket.remoteAddress
 
       ws.clientIP = clientIP
 
@@ -380,7 +380,7 @@ class MulleServer {
         }
 
         ws.isAlive = false
-        ws.ping('', false, true)
+        ws.ping('', false)
       })
     }, 30000)
 

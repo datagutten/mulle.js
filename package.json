@@ -30,7 +30,7 @@
 		"webpack": "^5",
 		"webpack-cli": "^4.7.0",
 		"webpack-merge": "^5.7.3",
-		"ws": "^5.2.3"
+		"ws": "^8"
 	},
 	"dependencies": {
 		"colors": "^1.1.2",
