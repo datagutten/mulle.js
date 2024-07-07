@@ -171,6 +171,11 @@ class MulleSprite extends Phaser.Sprite {
     return false
   }
 
+  loadDirectorTexture(name) {
+    const [key, frame] = this.game.director.getNamedImage(name)
+    this.loadTexture(key, frame)
+  }
+
   /**
    * Add animation with director members instead of frames
    * @param {string}  name           [description]

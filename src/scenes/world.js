@@ -250,7 +250,7 @@ class WorldState extends MulleState {
     }
 
     this.spriteDashboard = new MulleSprite(this.game, 320, 440)
-    this.spriteDashboard.setDirectorMember('05.DXR', 25)
+    this.spriteDashboard.loadDirectorTexture('01b003v0')
     this.game.add.existing(this.spriteDashboard)
 
     var fuelFrames = []
@@ -259,7 +259,7 @@ class WorldState extends MulleState {
     }
 
     this.spriteFuelNeedle = new MulleSprite(this.game, 491, 447)
-    this.spriteFuelNeedle.setDirectorMember('05.DXR', 27)
+    this.spriteFuelNeedle.loadDirectorTexture('01a001v0')
     this.spriteFuelNeedle.addAnimation('fuel', fuelFrames, 10, true)
     this.spriteFuelNeedle.animations.stop('fuel')
     this.game.add.existing(this.spriteFuelNeedle)
@@ -267,7 +267,7 @@ class WorldState extends MulleState {
     // console.log('fuel needle animations', this.spriteFuelNeedle.animations);
 
     this.spriteSpeedometer = new MulleSprite(this.game, 99, 446)
-    this.spriteSpeedometer.setDirectorMember('05.DXR', 46)
+    this.spriteSpeedometer.loadDirectorTexture('01a003v0')
     this.game.add.existing(this.spriteSpeedometer)
 
     var spdMask = this.game.add.graphics(0, 0)
@@ -285,7 +285,7 @@ class WorldState extends MulleState {
       console.log('show', this)
 
       this.popupMenu = new MulleSprite(this.game, 320, 200)
-      this.popupMenu.setDirectorMember('05.DXR', 53)
+      this.popupMenu.loadDirectorTexture('19b001v0')
       this.game.add.existing(this.popupMenu)
 
       var rectList = {
