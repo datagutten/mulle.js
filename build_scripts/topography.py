@@ -1,5 +1,6 @@
 import json
 import os
+import sys
 
 from PIL import Image, ImageDraw
 
@@ -51,7 +52,4 @@ def build_topography(source_path, output_path):
 
 
 if __name__ == '__main__':
-    dir_path = os.path.dirname(os.path.realpath(__file__))
-    project_path = os.path.realpath(os.path.join(dir_path, '..'))
-    topo_path = os.path.join(project_path, "topography")
-    topo_source = os.path.join(project_path, "cst_out_new", "CDDATA.CXT", "Standalone")
+    build_topography(sys.argv[1], sys.argv[2])
