@@ -42,7 +42,7 @@ MapObject.onEnterInner = function (car) {
 
       this.playedSound = true
 
-      const sound = this.game.mulle.playAudio(this.def.Sounds[1])
+      const sound = this.game.mulle.playAudio(this.def.Sounds[1]) // Goat sounds
       sound.onStop.addOnce(() => {
         this.playedSound = null
       })
@@ -65,7 +65,11 @@ MapObject.onEnterInner = function (car) {
 
 MapObject.onExitInner = function (car) {
   this.animations.play('gathering')
-  // this.game.mulle.stopAudio(); //TODO: Check sound
+
+}
+
+MapObject.onExitOuter = function (car) {
+  this.game.mulle.stopAudio(this.def.Sounds[1]);
 }
 
 export default MapObject
