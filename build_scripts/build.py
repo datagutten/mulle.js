@@ -13,6 +13,7 @@ from git import Repo
 
 import ShockwaveExtractor
 from topography import build_topography
+from convert_image import convert_image
 
 
 def download_file(url, local_file, show_progress=True):
@@ -252,7 +253,7 @@ class Build:
 
         loading_file = os.path.join(self.extract_folder, '00.CXT', 'Standalone', '122.bmp')
         output_file = os.path.join(self.dist_folder, 'loading.png')
-        subprocess.run(['magick', 'convert', loading_file, output_file]).check_returncode()
+        convert_image(loading_file, output_file=output_file)
 
     def topography(self):
         subprocess.run([sys.executable, os.path.join(self.script_folder, 'topography.py')])
