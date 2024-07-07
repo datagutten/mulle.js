@@ -147,6 +147,7 @@ class AlbumState extends MulleState {
     }
     this.game.mulle.user.Car.Medals = medals
     this.game.mulle.user.Car.Name = name
+    this.game.mulle.user.Car.updateStats()
     this.close()
   }
 
