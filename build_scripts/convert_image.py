@@ -28,8 +28,19 @@ def convert_image(file, transparent=True, output_folder=None, output_file=None):
         rgba.putdata(data_new)
         rgba.save(output_file)
     else:
+        im.getpixel((1, 1))
+        colors = list(im.palette.colors.keys())
+        palette = []
+
+        for color in colors:
+            r, g, b = color
+            palette += [r, g, b]
+            pass
+        palette += [255, 255, 255]
+        im.putpalette(palette)
         im.save(output_file)
+    return output_file
 
 
 if __name__ == '__main__':
-    convert_image(sys.argv[1])
+    convert_image(sys.argv[1], False)
