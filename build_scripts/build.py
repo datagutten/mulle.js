@@ -36,6 +36,7 @@ class Build:
         self.dist_folder = os.path.join(self.project_folder, 'dist')
         self.movie_folder = os.path.join(self.build_folder, 'Movies')
         self.extract_folder = os.path.join(self.project_folder, 'cst_out_new')
+        self.iso_folder = os.path.join(self.script_folder, '..', 'iso')
         if not os.path.exists(self.build_folder):
             os.mkdir(self.build_folder)
 
