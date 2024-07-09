@@ -255,6 +255,7 @@ class Build:
             output_file = os.path.join(ui_folder, '%s.png' % name)
             shutil.copy(part_file, output_file)
 
+        # Copy loading image
         loading_file = os.path.join(self.extract_folder, '00.CXT', 'Standalone', '122.bmp')
         output_file = os.path.join(self.dist_folder, 'loading.png')
         convert_image(loading_file, output_file=output_file)
@@ -312,6 +313,9 @@ if __name__ == '__main__':
     if 'html_css' in sys.argv:
         build.html()
         build.css()
+
+    if 'ui-images' in sys.argv:
+        build.copy_images()
 
     if 'data' in sys.argv:
         build.copy_images()
