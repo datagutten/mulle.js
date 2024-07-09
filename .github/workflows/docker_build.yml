@@ -48,9 +48,11 @@ jobs:
       run: |
         mkdir -p iso
         wget -nc -O iso/mullebil_${{ matrix.language }}.iso ${{ matrix.url }}
+      continue-on-error: true
 
     - name: Download plugin
       run: wget -nc -O iso/plugin.exe 'https://web.archive.org/web/20011006153539if_/http://www.levende.no:80/mulle/plugin.exe'
+      continue-on-error: true
 
     - name: Set up Docker Buildx
       uses: docker/setup-buildx-action@v3
@@ -66,5 +68,5 @@ jobs:
     - name: Upload artifact
       uses: actions/upload-artifact@v4
       with:
-        name: mulle_js
+        name: mulle_js_${{ matrix.language }}
         path: /tmp/mulle_js_${{ matrix.language }}.tar
