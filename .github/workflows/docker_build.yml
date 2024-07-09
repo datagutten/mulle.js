@@ -32,11 +32,23 @@ jobs:
         key: game-iso-${{ matrix.language }}-${{ hashFiles('iso/mullebil_*.iso') }}
         restore-keys: game-iso-${{ matrix.language }}-
 
+    - name: Cache plugin
+      uses: actions/cache@v4
+      id: iso
+      with:
+        path: iso/plugin.exe
+        key: plugin-${{ hashFiles('iso/plugin.exe') }}
+        restore-keys: plugin-
+
+
     - name: Download game iso
       shell: bash
       run: |
         mkdir -p iso
         wget -nc -O iso/mullebil_${{ matrix.language }}.iso ${{ matrix.url }}
+
+    - name: Download plugin
+      run: wget -nc -O iso/plugin.exe 'https://web.archive.org/web/20011006153539if_/http://www.levende.no:80/mulle/plugin.exe'
 
     - name: Set up Docker Buildx
       uses: docker/setup-buildx-action@v3
