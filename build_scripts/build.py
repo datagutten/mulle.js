@@ -60,6 +60,9 @@ class Build:
         drxtract_run = subprocess.run([sys.executable, 'drxtract', 'pc', movie_file, extract_folder],
                                       cwd=drxtract_folder, capture_output=True)
         drxtract_run.check_returncode()
+        if len(os.listdir(extract_folder)) == 0:
+            raise RuntimeError(
+                'No files extracted from %s, output from drxtract: %s' % (movie_file, drxtract_run.stderr.decode()))
         return extract_folder
 
     def scores(self):
