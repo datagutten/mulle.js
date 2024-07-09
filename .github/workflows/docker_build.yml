@@ -34,7 +34,7 @@ jobs:
 
     - name: Cache plugin
       uses: actions/cache@v4
-      id: iso
+      id: plugin
       with:
         path: iso/plugin.exe
         key: plugin-${{ hashFiles('iso/plugin.exe') }}
