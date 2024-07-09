@@ -63,7 +63,7 @@ jobs:
         context: .
         tags: mulle_js:${{ matrix.language }}
         outputs: type=docker,dest=/tmp/mulle_js_${{ matrix.language }}.tar
-        build-args:
+        build-args: |
           GAME_LANG=${{ matrix.language }}
           OPTIPNG_LEVEL=0
 
