@@ -27,7 +27,7 @@ resMenu.addFile({'dir': '10.DXR', 'lib': 'Internal', 'num': '125-138'})  # mulle
 resMenu.addFile({'dir': '10.DXR', 'lib': 'Internal', 'num': '156-163'})  # buffa
 resMenu.addFile({'dir': '10.DXR', 'lib': 'Internal', 'num': '169-170'})  # toilet
 resMenu.addFile({'dir': '10.DXR', 'lib': 'Internal', 'num': '287-292'})  # intro audio
-resMenu.addFile({'dir': '10.DXR', 'lib': 'Internal', 'num': '300-307'})  # menu audio
+resMenu.addFile({'dir': '10.DXR', 'lib': 'Internal', 'num': '300-310'})  # menu audio
 MulleResources.append(resMenu)
 
 resParts = MulleResource('carparts')
@@ -70,6 +70,7 @@ resDriving.addFile({'dir': '05.DXR', 'lib': 'Internal', 'num': '233-249'})  # vo
 # resDriving.addFile({ 'dir': '05.DXR', 'lib': 'Internal', 'num': '265-266' }) # skid
 resDriving.addFile({'dir': '05.DXR', 'lib': 'Internal', 'num': '269-275'})  # horns
 resDriving.addFile({'dir': '05.DXR', 'lib': 'Internal', 'num': '294-369'})  # engine
+resDriving.addFile({'dir': '05.DXR', 'lib': 'Internal', 'num': '238-289'})  # engine nl
 
 MulleResources.append(resDriving)
 
@@ -276,7 +277,11 @@ resDoris.addFile({'dir': '90.DXR', 'lib': 'Internal', 'num': 185})  # Game sound
 resDoris.addFile({'dir': '90.DXR', 'lib': 'Internal', 'num': '200-202'})  # Speech
 MulleResources.append(resDoris)
 
-assetOutPath = "./dist/assets"
+if not sys.argv[2]:
+    assetOutPath = "./dist/assets"
+else:
+    assetOutPath = sys.argv[2]
+
 if not os.path.exists(assetOutPath):
     os.makedirs(assetOutPath)
 assetWebPath = "assets"
