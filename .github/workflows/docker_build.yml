@@ -34,7 +34,7 @@ jobs:
 
     - name: Download game iso
       shell: bash
-      run: wget -nc -O iso/mullebil_${{ matrix.language }}.iso
+      run: wget -nc -O iso/mullebil_${{ matrix.language }}.iso ${{ matrix.url }}
 
     - name: Set up Docker Buildx
       uses: docker/setup-buildx-action@v3
