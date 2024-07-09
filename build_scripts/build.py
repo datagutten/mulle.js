@@ -167,11 +167,11 @@ class Build:
             url = 'https://archive.org/download/1.mielmonteurbouwtautosiso/1.Miel%20Monteur%20Bouwt%20Auto%27s%20ISO.iso'
         else:
             raise AttributeError('Invalid language')
-        iso_folder = os.path.join(self.script_folder, 'iso')
-        if not os.path.exists(iso_folder):
-            os.mkdir(iso_folder)
 
-        local_file = os.path.join(iso_folder, 'mullebil_%s.iso' % self.language)
+        if not os.path.exists(self.iso_folder):
+            os.mkdir(self.iso_folder)
+
+        local_file = os.path.join(self.iso_folder, 'mullebil_%s.iso' % self.language)
         if os.path.exists(local_file):
             return local_file
 
@@ -180,7 +180,7 @@ class Build:
 
     def download_plugin(self):
         url = 'https://web.archive.org/web/20011006153539if_/http://www.levende.no:80/mulle/plugin.exe'
-        local_file = os.path.join(self.script_folder, 'iso', 'plugin.exe')
+        local_file = os.path.join(self.iso_folder, 'plugin.exe')
         extract_dir = os.path.join(self.build_folder, 'Plugin')
         if not os.path.exists(local_file):
             download_file(url, local_file, False)
