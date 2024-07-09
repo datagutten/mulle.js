@@ -76,7 +76,7 @@ COPY --from=builder_js /build/topography/topography.json ./assets/topography
 COPY --from=builder_js /build/topography/topography.png ./assets/topography
 
 # Copy static files from source
-COPY ./src/index.html .
+COPY ./src/index_cdn.html ./index.html
 COPY ./data ./data
 COPY ./info ./info
 COPY ./progress ./progress
