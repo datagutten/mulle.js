@@ -212,6 +212,7 @@ class MulleCar {
 
     this.getParts().forEach(v => {
       if (v.getProperty('grip')) tires++
+      if (v.getProperty('grip') === 9) tires = 2 //Caterpillars count as wheels for both axles
     })
 
     // tires
