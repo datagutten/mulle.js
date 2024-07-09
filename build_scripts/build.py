@@ -69,7 +69,7 @@ class Build:
     def scores(self):
         files = glob.glob('%s/8*' % self.movie_folder)
         if not files:
-            raise RuntimeError('No movies found for glob 8*')
+            raise RuntimeError('Error building scores, no movies found for glob 8*')
 
         for movie_file in files:
             extract_folder = self.drxtract(movie_file)
