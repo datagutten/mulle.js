@@ -108,13 +108,15 @@ class DiplomaState extends MulleState {
       count++
     }
 
-    this.bottom = DirectorHelper.sprite(this.game, 14, this.carImageRectangle.bottom + 100, this.DirResource, 70)
-    this.scroll_layer.add(this.bottom)
-
     const frame = this.add.graphics(0, 0, this.scroll_layer);
     frame.beginFill(0x000000)
-    frame.drawRect(12, 2, 2, 777)
-    frame.drawRect(572, 2, 2, 777)
+    const border = frame.drawRect(12, 2, 2, 777) //Left border
+    frame.drawRect(572, 2, 2, 777) // Right border
+
+    // Line is 39 pixels from top of image, subtract to make bottom of side borders match bottom border
+    //Texture 08b004v0
+    this.bottom = DirectorHelper.sprite(this.game, 14, border.bottom - 39, this.DirResource, 70, false, false)
+    this.scroll_layer.add(this.bottom)
   }
 
 
