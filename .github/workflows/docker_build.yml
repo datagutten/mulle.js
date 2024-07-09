@@ -59,6 +59,7 @@ jobs:
         context: .
         tags: mulle_js:${{ matrix.language }}
         outputs: type=docker,dest=/tmp/mulle_js_${{ matrix.language }}.tar
+        build-args: GAME_LANG=${{ matrix.language }}
 
     - name: Upload artifact
       uses: actions/upload-artifact@v4
