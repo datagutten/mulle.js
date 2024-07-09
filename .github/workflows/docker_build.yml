@@ -1,0 +1,53 @@
+name: ci
+
+on:
+  push:
+
+jobs:
+  docker:
+    runs-on: ubuntu-latest
+
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+        - language: no
+          url: https://archive.org/download/bygg-biler-med-mulle-mekk/Bygg%20biler%20med%20Mulle%20Mekk.iso
+        - language: sv
+          url: https://archive.org/download/byggbilarmedmullemeck/byggbilarmedmullemeck.iso
+        - language: da
+          url: https://archive.org/download/byg-bil-med-mulle-meck/Byg-bil-med-Mulle-Meck.iso
+        - language: nl
+          url: https://archive.org/download/1.mielmonteurbouwtautosiso/1.Miel%20Monteur%20Bouwt%20Auto%27s%20ISO.iso
+
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v4
+
+    - name: Cache game iso
+      uses: actions/cache@v4
+      id: iso
+      with:
+        path: iso/mullebil_${{ matrix.language }}.iso
+        key: game-iso-${{ matrix.language }}-${{ hashFiles('iso/mullebil_*.iso') }}
+        restore-keys: game-iso-${{ matrix.language }}-
+
+    - name: Download game iso
+      shell: bash
+      run: wget -nc -O iso/mullebil_${{ matrix.language }}.iso
+
+    - name: Set up Docker Buildx
+      uses: docker/setup-buildx-action@v3
+
+    - name: Build
+      uses: docker/build-push-action@v5
+      with:
+        context: .
+        tags: mulle_js:${{ matrix.language }}
+        outputs: type=docker,dest=/tmp/mulle_js_${{ matrix.language }}.tar
+
+    - name: Upload artifact
+      uses: actions/upload-artifact@v4
+      with:
+        name: mulle_js
+        path: /tmp/mulle_js_${{ matrix.language }}.tar
