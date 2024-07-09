@@ -97,8 +97,14 @@ jobs:
       - name: Build topography
         run: python build_scripts/build.py ${{ matrix.language }} topography
 
+      - name: Convert and copy UI images
+        run: python build_scripts/build.py ui-images
+
       - name: Build assets
         run: python assets.py 0 ./dist/assets
+
+      - name: Copy game data
+        run: cp -R data dist/data
 
       - uses: actions/upload-artifact@v4
         with:
