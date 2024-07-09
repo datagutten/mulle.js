@@ -91,17 +91,17 @@ jobs:
       - name: Extract scores
         run: python build_scripts/build.py ${{ matrix.language }} scores
 
+      - name: Build assets
+        run: python assets.py 0 ./dist/assets
+
       - name: Build HTML and CSS
         run: python build_scripts/build.py ${{ matrix.language }} html_css
-
-      - name: Build topography
-        run: python build_scripts/build.py ${{ matrix.language }} topography
 
       - name: Convert and copy UI images
         run: python build_scripts/build.py ui-images
 
-      - name: Build assets
-        run: python assets.py 0 ./dist/assets
+      - name: Build topography
+        run: python build_scripts/build.py ${{ matrix.language }} topography
 
       - name: Copy game data
         run: cp -R data dist/data
