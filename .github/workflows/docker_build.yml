@@ -31,6 +31,7 @@ jobs:
         path: iso/mullebil_${{ matrix.language }}.iso
         key: game-iso-${{ matrix.language }}-${{ hashFiles('iso/mullebil_*.iso') }}
         restore-keys: game-iso-${{ matrix.language }}-
+        save-always: true
 
     - name: Cache plugin
       uses: actions/cache@v4
@@ -39,6 +40,7 @@ jobs:
         path: iso/plugin.exe
         key: plugin-${{ hashFiles('iso/plugin.exe') }}
         restore-keys: plugin-
+        save-always: true
 
 
     - name: Download game iso
