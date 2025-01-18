@@ -1,4 +1,4 @@
-FROM python:3 as builder_py
+FROM python:3.11 as builder_py
 ARG GAME_LANG=sv
 ARG OPTIPNG_LEVEL=7
 
