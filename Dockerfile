@@ -1,3 +1,9 @@
+# Override this step with additional_contexts in docker-compose.yml if ISO is outside project directory
+FROM scratch AS iso
+ARG GAME_LANG=sv
+COPY ./iso/mullebil_${GAME_LANG}.iso mullebil_${GAME_LANG}.iso
+COPY ./iso/plugin.exe plugin.exe
+
 FROM python:3.11 as builder_py
 ARG GAME_LANG=sv
 ARG OPTIPNG_LEVEL=7
@@ -10,8 +16,8 @@ COPY ./assets.py .
 COPY ./audiosprite ./audiosprite
 
 # Copy game data
-COPY ./iso/mullebil_${GAME_LANG}.iso ./iso/mullebil_${GAME_LANG}.iso
-COPY ./iso/plugin.exe ./iso/plugin.exe
+COPY --from=iso mullebil_${GAME_LANG}.iso ./iso/mullebil_${GAME_LANG}.iso
+COPY --from=iso plugin.exe ./iso/plugin.exe
 
 # Install dependencies
 RUN apt-get update
