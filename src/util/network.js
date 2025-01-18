@@ -16,8 +16,8 @@ class MulleNet {
 
     var address = process.env.NODE_ENV !== 'production' ? this.game.mulle.networkDevServer : this.game.mulle.networkServer
 
-    console.log('[network]', 'connect', address)
-    this.socket = new WebSocket('ws://' + address)
+    console.log('[network]', 'connect', process.env.SERVER_ADDRESS ?? address)
+    this.socket = new WebSocket(process.env.SERVER_ADDRESS ?? 'ws://' + address)
 
     // launch on connect
     this.socket.addEventListener('open', (event) => {

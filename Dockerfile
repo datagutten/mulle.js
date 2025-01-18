@@ -36,6 +36,9 @@ RUN python build_scripts/topography.py ./cst_out_new/CDDATA.CXT/Standalone ./top
 
 
 FROM node:18-bookworm as builder_js
+ARG SERVER_ADDRESS
+ENV SERVER_ADDRESS=${SERVER_ADDRESS}
+
 WORKDIR /build
 
 # Install dependencies
