@@ -59,7 +59,7 @@ jobs:
         uses: docker/build-push-action@v6.10.0
         with:
           push: true
-          tags: mulle_js:${{ matrix.language }}
+          tags: docker.datagutten.net/mulle_js:${{ matrix.language }}
           labels: ${{ steps.meta.outputs.labels }}
           build-contexts: iso=iso
           build-args: |
@@ -69,6 +69,6 @@ jobs:
       - name: Generate artifact attestation
         uses: actions/attest-build-provenance@v2
         with:
-          subject-name: docker.datagutten.net/datagutten/switchinfo
+          subject-name: docker.datagutten.net/mulle_js:${{ matrix.language }}
           subject-digest: ${{ steps.push.outputs.digest }}
           push-to-registry: true
