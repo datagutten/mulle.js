@@ -183,16 +183,17 @@ class Build:
         download_file(url, local_file, show_progress)
         return local_file
 
-    def download_plugin(self):
+    def download_plugin(self, extract=True):
         url = 'https://web.archive.org/web/20011006153539if_/http://www.levende.no:80/mulle/plugin.exe'
         local_file = os.path.join(self.iso_folder, 'plugin.exe')
         extract_dir = os.path.join(self.build_folder, 'Plugin')
         if not os.path.exists(local_file):
             download_file(url, local_file, False)
-        with zipfile.ZipFile(local_file, 'r') as zip_ref:
-            zip_ref.extractall(extract_dir)
-        ShockwaveExtractor.main(['-e', '-i', os.path.join(extract_dir, '66.dxr')])
-        ShockwaveExtractor.main(['-e', '-i', os.path.join(extract_dir, 'Plugin.cst')])
+        if extract:
+            with zipfile.ZipFile(local_file, 'r') as zip_ref:
+                zip_ref.extractall(extract_dir)
+            ShockwaveExtractor.main(['-e', '-i', os.path.join(extract_dir, '66.dxr')])
+            ShockwaveExtractor.main(['-e', '-i', os.path.join(extract_dir, 'Plugin.cst')])
 
     def extract_iso(self, extract_content=True):
         import pycdlib
@@ -304,7 +305,7 @@ if __name__ == '__main__':
 
     if 'download-only' in sys.argv:
         build.download_game(False)
-        build.download_plugin()
+        build.download_plugin(False)
 
     if 'download' in sys.argv:
         build.extract_iso()
