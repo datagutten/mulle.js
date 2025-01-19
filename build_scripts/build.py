@@ -297,6 +297,10 @@ if __name__ == '__main__':
     elif 'webpack-prod' in sys.argv:
         build.webpack(True)
 
+    if 'download-only' in sys.argv:
+        build.download_game(False)
+        build.download_plugin()
+
     if 'download' in sys.argv:
         build.extract_iso()
         build.download_plugin()
