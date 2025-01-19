@@ -6,14 +6,17 @@ import subprocess
 import sys
 import zipfile
 
-import pycdlib
 import requests
-import sass
-from git import Repo
 
-import ShockwaveExtractor
-from topography import build_topography
-from convert_image import convert_image
+try:
+    from git import Repo
+
+    import ShockwaveExtractor
+    from topography import build_topography
+    from convert_image import convert_image
+except ImportError as e:
+    if 'download-only' not in sys.argv:
+        raise e
 
 
 def download_file(url, local_file, show_progress=True):
@@ -147,6 +150,7 @@ class Build:
         shutil.copy(os.path.join(self.project_folder, 'src', 'index.html'), self.dist_folder)
 
     def css(self):
+        import sass
         sass.compile(dirname=(os.path.join(self.project_folder, 'src'), self.dist_folder))
 
     def copy_data(self):
@@ -191,6 +195,7 @@ class Build:
         ShockwaveExtractor.main(['-e', '-i', os.path.join(extract_dir, 'Plugin.cst')])
 
     def extract_iso(self, extract_content=True):
+        import pycdlib
         iso_path = self.download_game(False)
 
         iso = pycdlib.PyCdlib()
