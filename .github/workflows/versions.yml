@@ -18,7 +18,6 @@ jobs:
       fail-fast: false
       matrix:
         node-version: [ 16, 18, 20 ]
-        python-version: [ "3.9", "3.10", "3.12" ]
         os: [ ubuntu-latest, windows-latest ]
         # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
 
@@ -31,7 +30,7 @@ jobs:
     - name: Set up Python
       uses: actions/setup-python@v5
       with:
-        python-version: ${{ matrix.python-version }}
+        python-version: "3.11"
 
     - name: Get npm cache directory
       id: npm-cache-dir
