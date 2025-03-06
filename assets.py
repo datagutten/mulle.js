@@ -277,6 +277,13 @@ resDoris.addFile({'dir': '90.DXR', 'lib': 'Internal', 'num': 185})  # Game sound
 resDoris.addFile({'dir': '90.DXR', 'lib': 'Internal', 'num': '200-202'})  # Speech
 MulleResources.append(resDoris)
 
+resViola = MulleResource('viola')
+resViola.addFile({'dir': '89.DXR', 'lib': 'Internal', 'num': 1})  # Background
+resViola.addFile({'dir': '89.DXR', 'lib': 'Internal', 'num': '18-20'})  # Viola animation
+resViola.addFile({'dir': '89.DXR', 'lib': 'Internal', 'num': 177})  # Audio
+resViola.addFile({'dir': '89.DXR', 'lib': 'Internal', 'num': '200-202'})  # Audio
+MulleResources.append(resViola)
+
 if not sys.argv[2]:
     assetOutPath = "./dist/assets"
 else:

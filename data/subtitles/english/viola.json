@@ -1,0 +1,23 @@
+{
+    "89d001v0": {
+      "lines": [
+        "- Hi Mulle!",
+        "- How nice of you to stop by."
+      ],
+      "actor": "viola"
+    },
+    "89d002v0": {
+      "lines": [
+        "- Thanks for your help!",
+        "- Now I can continue with my work."
+      ],
+      "actor": "viola"
+    },
+    "89d003v0": {
+      "lines": [
+        "- Of course!",
+        "- Always happy to help."
+      ],
+      "actor": "mulle"
+    }
+  } 
