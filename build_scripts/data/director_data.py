@@ -215,6 +215,17 @@ data = {
     '94.DXR': {'folder': 'Internal', 'opaque': [200]},
     'CDDATA.CXT': {'folder': 'Standalone', 'opaque': [[629, 658]]},
     'PLUGIN.CST': {'folder': 'Standalone', 'opaque': [18]},
+    '89.DXR': {  # Viola
+        'file': '89.DXR',
+        'folder': 'Internal',
+        'range_sv': {
+            'background': 1,
+            'animation': [18, 20],
+            'audio': [177, 177, 200, 202]
+        },
+        'opaque': [1],
+        'identical': [[1, 1], [18, 20], [177, 177], [200, 202]],
+    },
 }
 
 
