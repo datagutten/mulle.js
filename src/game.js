@@ -28,6 +28,7 @@ import StureStortandState from 'scenes/sturestortand'
 import SaftfabrikState from 'scenes/saftfabrik'
 import SolhemState from 'scenes/solhem'
 import DorisDigitalState from 'scenes/dorisdigital'
+import ViolaState from 'scenes/viola'
 
 // var requireScenes = require.context('scenes', true, /\.js$/);
 // requireScenes.keys().forEach(requireScenes);
@@ -152,6 +153,7 @@ class MulleGame extends Phaser.Game {
       sturestortand: StureStortandState, // 88
       dorisdigital: DorisDigitalState, // 90
       figgeferrum: FiggeFerrumState, // 92
+      viola: ViolaState, // 89
 
       carshow: CarShowState // 94
 
