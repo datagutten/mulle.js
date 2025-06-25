@@ -47,6 +47,9 @@ for movie, topic in director_data.data.items():
 
     for key, area in topic['range_sv'].items():
         print(key)
+        if 'range_no' not in topic:
+            print(f'No translated range for {key}')
+            continue
 
         range_no = topic_range(topic['range_no'][key])
         range_sv = topic_range(topic['range_sv'][key])
