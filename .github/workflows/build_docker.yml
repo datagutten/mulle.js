@@ -56,7 +56,7 @@ jobs:
         uses: docker/build-push-action@v6
         with:
           push: true
-          tags:
+          tags: |
             docker.datagutten.net/mulle_js_${{ matrix.language }}
             docker.datagutten.net/mulle_js:${{ matrix.language }}
           labels: ${{ steps.meta.outputs.labels }}
