@@ -4,7 +4,7 @@ ARG GAME_LANG=sv
 COPY ./iso/mullebil_${GAME_LANG}.iso mullebil_${GAME_LANG}.iso
 COPY ./iso/plugin.exe plugin.exe
 
-FROM python:3.11 as builder_py
+FROM python:3.11 AS builder_py
 ARG GAME_LANG=sv
 ARG OPTIPNG_LEVEL=7
 
@@ -41,7 +41,7 @@ RUN python build_scripts/build.py ui-images
 RUN python build_scripts/topography.py ./cst_out_new/CDDATA.CXT/Standalone ./topography
 
 
-FROM node:18-bookworm as builder_js
+FROM node:18-bookworm AS builder_js
 ARG SERVER_ADDRESS
 ENV SERVER_ADDRESS=${SERVER_ADDRESS}
 
@@ -69,7 +69,7 @@ RUN npx webpack-cli -c webpack.prod.js
 RUN npm install -g sass
 RUN sass ./src/style.scss ./dist/style.css
 
-FROM httpd:bookworm as web_run
+FROM httpd:bookworm AS web_run
 EXPOSE 80
 ARG GAME_LANG=sv
 WORKDIR /usr/local/apache2/htdocs
