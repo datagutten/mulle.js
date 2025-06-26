@@ -20,8 +20,7 @@ COPY --from=iso mullebil_${GAME_LANG}.iso ./iso/mullebil_${GAME_LANG}.iso
 COPY --from=iso plugin.exe ./iso/plugin.exe
 
 # Install dependencies
-RUN apt-get update
-RUN apt-get -y install ffmpeg optipng
+RUN apt-get update && apt-get -y install ffmpeg optipng
 RUN pip install -r requirements.txt
 
 # Unpack iso
