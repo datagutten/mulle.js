@@ -195,7 +195,7 @@ class Build:
             ShockwaveExtractor.main(['-e', '-i', os.path.join(extract_dir, '66.dxr')])
             ShockwaveExtractor.main(['-e', '-i', os.path.join(extract_dir, 'Plugin.cst')])
 
-    def extract_iso(self, extract_content=True):
+    def extract_iso(self, extract_content=True, rename=True):
         import pycdlib
         iso_path = self.download_game(False)
 
@@ -227,7 +227,7 @@ class Build:
                     print('%s: %s' % (file, str(e)))
                     continue
 
-        if self.language != 'sv':
+        if rename and self.language != 'sv':
             self.rename()
 
     def copy_images(self):
@@ -311,6 +311,10 @@ if __name__ == '__main__':
         build.extract_iso()
         build.download_plugin()
 
+    if 'download-no-rename' in sys.argv:
+        build.extract_iso(rename=False)
+        build.download_plugin()
+
     if 'phaser' in sys.argv:
         build.phaser()
 
@@ -336,3 +340,6 @@ if __name__ == '__main__':
 
     if 'assets-prod' in sys.argv:
         build.assets(7)
+
+    if 'rename' in sys.argv:
+        build.rename()
