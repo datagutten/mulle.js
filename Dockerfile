@@ -40,7 +40,7 @@ RUN python build_scripts/build.py ui-images
 RUN python build_scripts/topography.py ./cst_out_new/CDDATA.CXT/Standalone ./topography
 
 
-FROM node:18-bookworm AS builder_js
+FROM node:24 AS builder_js
 ARG SERVER_ADDRESS
 ENV SERVER_ADDRESS=${SERVER_ADDRESS}
 
