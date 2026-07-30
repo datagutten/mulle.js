@@ -1,4 +1,4 @@
-pillow==9.5.0
+pillow
 PyTexturePacker
 pydub
 bitstring

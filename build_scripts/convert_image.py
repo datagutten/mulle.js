@@ -16,16 +16,12 @@ def convert_image(file, transparent=True, output_folder=None, output_file=None):
 
     if transparent:
         rgba = im.convert("RGBA")
-        datas = rgba.getdata()
+        for x in range(0, im.width):
+            for y in range(0, im.height):
+                color_pos = im.getpixel((x, y))
+                if color_pos == 255:
+                    rgba.putpixel((x, y), (255, 255, 255, 0))
 
-        data_new = []
-        for item in datas:
-            if item == (255, 255, 255, 255):
-                data_new.append((255, 255, 255, 0))
-            else:
-                data_new.append(item)  # other colours remain unchanged
-
-        rgba.putdata(data_new)
         rgba.save(output_file)
     else:
         im.getpixel((1, 1))
