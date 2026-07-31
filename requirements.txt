@@ -8,3 +8,7 @@ GitPython
 requests
 libsass
 pyyaml
+
+standard-aifc
+standard-sunau
+git+https://github.com/datagutten/ShockwaveParser.git

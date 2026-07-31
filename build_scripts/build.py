@@ -14,7 +14,7 @@ from assets.build_spritesheets import SpriteSheetBuilder
 try:
     from git import Repo
 
-    import ShockwaveExtractor
+    from shockwaveparser import ShockwaveExtractor
     from topography import build_topography
     from convert_image import convert_image
 except ImportError as e:
