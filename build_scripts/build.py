@@ -8,8 +8,8 @@ import zipfile
 from pathlib import Path
 
 import requests
-from build_scripts.assets import DirectorAssets
-from build_scripts.assets.build_spritesheets import SpriteSheetBuilder
+from assets import DirectorAssets
+from assets.build_spritesheets import SpriteSheetBuilder
 
 try:
     from git import Repo
