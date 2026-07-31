@@ -145,6 +145,8 @@ class DirectorAssets:
         with config_file.open() as fp:
             self.data = yaml.load(fp, Loader=Loader)
 
+        self.translate = self.language != 'sv'
+
     @cached_property
     def translations(self):
         translations = {}
@@ -189,10 +191,10 @@ class DirectorAssets:
             values += DirectorAssets.resolve_range(entry)
         return values
 
-    def get_asset(self, movie: str, library: str, member: int, translate=True, opaque=False):
+    def get_asset(self, movie: str, library: str, member: int, opaque=False):
         # data = self.data.get(movie)
         movie_obj = self.get_movie(movie)
-        if translate:
+        if self.translate:
             translated_member = self.translate_member(movie, library, member)
             return movie_obj.get_asset(library, translated_member or member, opaque=opaque, original_num=member)
         else:
@@ -215,7 +217,7 @@ class DirectorAssets:
                 for member in self.flatten_ranges(rules['members']):
                     try:
                         assets.append(
-                            self.get_asset(movie, library, member, self.language != 'sv', opaque=member in opaque))
+                            self.get_asset(movie, library, member, opaque=member in opaque))
                     except AssetNotFound as e:
                         # raise e
                         continue
