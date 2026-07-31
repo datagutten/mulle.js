@@ -46,6 +46,9 @@ class Build:
         if not os.path.exists(self.build_folder):
             os.mkdir(self.build_folder)
 
+        config_file = Path(self.script_folder).joinpath('assets', 'assets.yml')
+        self.director_assets = DirectorAssets(self.language, Path(self.extract_folder), config_file)
+
         if platform.system() == 'Windows':
             self.npm = 'npm.CMD'
             self.npx = 'npx.CMD'
@@ -231,12 +234,12 @@ class Build:
     def copy_images(self):
         plugin_parts = [22, 25, 29, 33, 36, 39, 43]
         for part in plugin_parts:
-            part_file = os.path.join(self.extract_folder, 'PLUGIN.CST', 'Standalone', '%s.png' % part)
+            part_file = self.director_assets.get_asset('PLUGIN.CST', 'Standalone', part).file()
             info_img_path = os.path.join(self.dist_folder, 'info', 'img')
             if not os.path.exists(info_img_path):
                 os.mkdir(info_img_path)
             output_file = os.path.join(info_img_path, '%s.png' % part)
-            shutil.copy(part_file, output_file)
+            convert_image(part_file, output_file)
 
         cursors = {
             109: 'default',
@@ -255,12 +258,12 @@ class Build:
             os.makedirs(ui_folder, exist_ok=True)
 
         for number, name in cursors.items():
-            part_file = os.path.join(self.extract_folder, '00.CXT', 'Standalone', '%d.png' % number)
+            cursor_file = self.director_assets.get_asset('00.CXT', 'Standalone', number).file()
             output_file = os.path.join(ui_folder, '%s.png' % name)
-            shutil.copy(part_file, output_file)
+            convert_image(cursor_file, output_file=output_file)
 
         # Copy loading image
-        loading_file = os.path.join(self.extract_folder, '00.CXT', 'Standalone', '122.bmp')
+        loading_file = self.director_assets.get_asset('00.CXT', 'Standalone', 122).file()
         output_file = os.path.join(self.dist_folder, 'loading.png')
         convert_image(loading_file, output_file=output_file)
 
@@ -280,13 +283,10 @@ class Build:
             raise e
 
     def assets(self, optipng: int = 0):
-        config_file = Path(self.script_folder).joinpath('assets', 'assets.yml')
-        assets = DirectorAssets(self.language, Path(self.extract_folder), config_file)
-
-        for sheet in assets.spritesheets():
+        for sheet in self.director_assets.spritesheets():
             builder = SpriteSheetBuilder(sheet, Path(self.project_folder).joinpath(f'assets_{self.language}'),
                                          optipng_level=optipng)
-            builder.add_assets(assets.get_spritesheet_assets(sheet))
+            builder.add_assets(self.director_assets.get_spritesheet_assets(sheet))
             builder.save()
 
 
