@@ -7,7 +7,9 @@ COPY ./iso/plugin.exe plugin.exe
 FROM python:3.14 AS builder_py
 # Install dependencies
 RUN apt-get update && apt-get -y install ffmpeg optipng
-COPY ./requirements.txt .
+RUN pip install --upgrade pip poetry poetry-plugin-export
+COPY pyproject.toml .
+RUN poetry export -f requirements.txt --output requirements.txt --without-hashes
 RUN pip install -r requirements.txt
 
 ARG GAME_LANG=sv
