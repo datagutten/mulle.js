@@ -4,24 +4,24 @@ ARG GAME_LANG=sv
 COPY ./iso/mullebil_${GAME_LANG}.iso mullebil_${GAME_LANG}.iso
 COPY ./iso/plugin.exe plugin.exe
 
-FROM python:3.11 AS builder_py
+FROM python:3.14 AS builder_py
+# Install dependencies
+RUN apt-get update && apt-get -y install ffmpeg optipng
+COPY ./requirements.txt .
+RUN pip install -r requirements.txt
+
 ARG GAME_LANG=sv
 ARG OPTIPNG_LEVEL=7
 
 WORKDIR /build
+ENV PYTHONPATH=/build
 # Copy build scripts
 COPY ./build_scripts ./build_scripts
-COPY ./requirements.txt .
-COPY ./assets.py .
 COPY ./audiosprite ./audiosprite
 
 # Copy game data
 COPY --from=iso mullebil_${GAME_LANG}.iso ./iso/mullebil_${GAME_LANG}.iso
 COPY --from=iso plugin.exe ./iso/plugin.exe
-
-# Install dependencies
-RUN apt-get update && apt-get -y install ffmpeg optipng
-RUN pip install -r requirements.txt
 
 # Unpack iso
 RUN python build_scripts/build.py ${GAME_LANG} download
@@ -31,7 +31,7 @@ RUN mkdir -p dist/info/img
 
 # Build scores and assets
 RUN python build_scripts/build.py ${GAME_LANG} scores
-RUN python assets.py ${OPTIPNG_LEVEL} assets_${GAME_LANG}
+RUN python build_scripts/build.py ${GAME_LANG} assets
 
 # Convert and copy UI images
 RUN python build_scripts/build.py ui-images
