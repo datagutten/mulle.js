@@ -168,6 +168,8 @@ class Build:
             url = 'https://archive.org/download/byggbilarmedmullemeck/byggbilarmedmullemeck.iso'
         elif self.language == 'da':
             url = 'https://archive.org/download/byg-bil-med-mulle-meck/Byg-bil-med-Mulle-Meck.iso'
+        elif self.language == 'fi':
+            url = 'https://archive.org/download/RakennaAutojaMasaMainionKanssa/Rakenna%20autoja%20Masa%20Mainion%20kanssa.iso'
         elif self.language == 'nl':
             url = 'https://archive.org/download/1.mielmonteurbouwtautosiso/1.Miel%20Monteur%20Bouwt%20Auto%27s%20ISO.iso'
         else:
