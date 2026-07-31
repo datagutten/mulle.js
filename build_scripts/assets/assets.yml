@@ -492,7 +492,7 @@ ui:
       translations:
         loading:
           source: [122,123]
-          en: [452,453]
+          other: [ 452,453 ]
 
 viola:
   89.DXR:
