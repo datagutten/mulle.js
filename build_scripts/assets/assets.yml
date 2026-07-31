@@ -1,0 +1,528 @@
+# res\w+.addFile\(\{\s?dir: .+, lib: \w+, num: ([\d-]+)\s?\}\)
+# res\w+.addFile.+num':'?\s?'?([\d-]+)'?\s?}\)
+# $1
+
+#(\d+)-(\d+)
+# - [$1, $2]
+album:
+  06.DXR:
+    Internal:
+      members:
+        - [ 21, 27 ] # Medals
+        - [ 38, 40 ] # UI sounds
+        - [ 49, 84 ] # Page numbers
+        - 93 # Page
+        - [ 97, 101 ] # Page
+        - [ 137, 150 ] # Sounds
+        - [ 153, 164 ] # UI
+      opaque:
+        - 93
+        - 101
+        - [ 155, 158 ]
+        - 160
+
+carparts:
+  CDDATA.CXT:
+    Standalone:
+      members:
+        - [ 239, 312 ]
+        - [ 316, 496 ]
+        - [ 838, 917 ]
+        - [ 966, 1018 ]
+        - [ 1213, 1390 ]  # Audio
+
+carshow:
+  94.DXR:
+    Internal:
+      members:
+        - [ 17, 21 ] # Numbers
+        - [ 31, 47 ] # Judge animation
+        - 185 # Background sounds
+        - 200 # Background image
+        - [ 201, 209 ] # Speech
+      opaque:
+        - 200
+characters:
+  00.CXT:
+    Standalone:
+      members:
+        - [ 214, 227 ] # Buffa
+        - [ 245, 263 ] # Car
+        - [ 271, 302 ] # Car
+
+cutscenes:
+  00.CXT:
+    Standalone:
+      members:
+        - [ 66, 76 ] # Cutscenes
+        - 81 # Rolled diploma
+        - [ 83, 86 ]  # Album and camera
+      opaque:
+        - [ 66, 76 ]
+        - [ 81, 86 ]
+diploma:
+  08.DXR:
+    Internal:
+      members:
+        - 15
+        - [ 17, 18 ]
+        - [ 21, 27 ]
+        - 31
+        - [ 39, 40 ]
+        - [ 66, 71 ]
+        - [ 81, 86 ]  # Strings
+      opaque:
+        - 31
+        - 39
+        - 40
+        - 66
+        - 70
+        - 71
+      translations:
+        text:
+          source: 69
+          en: 87
+
+dorisdigital:
+  90.DXR:
+    Internal:
+      members:
+        - 1 # Outside
+        - [ 18, 19 ] # Flashing window
+        - 185 # Game sounds
+        - [ 200, 202 ] # Speech
+      opaque:
+        - 1
+        - 18
+        - 19
+driving:
+  05.DXR:
+    Internal:
+      members:
+        - 21  # ui
+        - 25  # dashboard
+        - [ 27, 42 ]  # fuel meter
+        - 46  # speed meter
+        - 53  # menu
+        - [ 69, 75 ]  # medals
+        - [ 77, 157 ]  # car
+        - [ 161, 192 ]  # pointer
+        - [ 233, 249 ]  # voices
+        # - [265, 266] # skid
+        - [ 269, 275 ]  # horns
+        - [ 294, 369 ]  # engine
+      opaque: [ 25, 26, 53, 54, 57 ]
+      translations:
+        #menu:
+        #  source: 53
+        #  other: 321
+        engine:
+          source: [ 294, 369 ]
+          nl: [ 238, 289 ]
+  CDDATA.CXT:
+    Standalone:
+      members:
+        - [ 497, 514 ]  # images
+        - [ 565, 598 ]  # audio
+        - [ 599, 622 ]  # images (Obstructions: cows, goat, bridge)
+        - 624 # Car in water
+        - 625  # audio
+        - 626 # Racetrack bridge
+        - 628 # Race scoreboard
+
+figgeferrum:
+  92.DXR:
+    Internal:
+      members:
+        - 1 # Background
+        - 11 # Gas can
+        - [ 16, 27 ]
+        - 37 # DogAnimChart
+        - [ 40, 44 ] # Salka animation frames
+        - [ 181, 182 ] # Sound
+        - [ 199, 205 ] # Sound
+      opaque:
+        - 1
+      translations:
+        audio1:
+          source: [ 181,182 ]
+          other: [ 177, 178 ]
+        audio2:
+          other: [ 195, 201 ]
+          source: [ 199, 205 ]
+        background:
+          other: 203
+          source: 1
+        can:
+          other: 7
+          source: 11
+        dog:
+          other:
+            - 36
+            - 40
+          source:
+            - 40
+            - 44
+        dogAnimChart:
+          other: 33
+          source: 37
+        neighbor:
+          other:
+            - 12
+            - 23
+          source:
+            - 16
+            - 27
+fileBrowser:
+  13.DXR:
+    Internal:
+      members:
+        - 17 # Audio
+        - 29 # Scrollbar
+        - 32 # File browser
+      opaque:
+        - 32
+      translations:
+        browser:
+          source: [17,32]
+          en: [18,33]
+
+garage:
+  03.DXR:
+    Internal:
+      members:
+        - 33  # Background
+        - [ 34, 40 ]  # Doors
+        - [ 81, 93 ]  # figge
+        - [ 101, 105 ]  # phone and hover
+        - [ 107, 108 ]  # figge truck
+        - [ 181, 183 ]  # ui sounds
+        - [ 208, 223 ]  # voices
+        - [ 226, 258 ]  # voices
+        - [ 262, 264 ]  # voice remarks
+      translation:
+        voices:
+          source: [ 262, 264 ]
+          other: [ 259, 261 ]
+        #'identical':  [ 28, 258 ]
+      opaque:
+        - 33
+        - 100
+        - 101
+      translations:
+        voices:
+          other:
+            - 259
+            - 261
+          source:
+            - 262
+            - 264
+  CDDATA.CXT:
+    Standalone:
+      members:
+        - 23  # Phone audio roaddog
+        - [ 26, 28 ]  # Phone audio Doris/Mia/Lasse
+junk:
+  02.DXR:
+    Internal:
+      members:
+        - 66 # Pile
+        - [ 68, 72 ] # Pile
+        - [ 85, 96 ] # Doors
+        - [ 122, 137 ] # Sounds
+        - [ 162, 185 ]  # Arrows
+        - [ 209, 210 ] # Mulle body
+        - [ 226, 243 ] # Mulle head
+        - [ 246, 263 ] # Mulle head
+      opaque:
+        - [ 66,72 ]
+      translations:
+        arrows:
+          other: [ 110,133 ]
+          source: [ 162, 185 ]
+        clank:
+          other: 101
+          source: 122
+        mulle_body:
+          other: [ 141, 142 ]
+          source: [ 209, 210 ]
+        mulle_head:
+          other: [ 150, 187 ]
+          source: [ 226, 263 ]
+        voices:
+          other: [ 200, 214 ]
+          source: [ 123, 137 ]
+
+lbstart:
+  LBSTART.DXR:
+    Internal:
+      members:
+        - [ 28, 106 ]
+
+luddelabb:
+  91.DXR:
+    Internal:
+      members:
+        - 1
+        - 174
+        - [ 200, 202 ]
+      opaque:
+        - 1
+map:
+  CDDATA.CXT:
+    Standalone:
+      members:
+        - [ 629, 658 ]
+      opaque:
+        - [ 629, 658 ]
+
+menu:
+  10.DXR:
+    Internal:
+      members:
+        - 2 # Background
+        - [ 115, 123 ]  # face
+        - [ 125, 138 ]  # mulle
+        - [ 156, 163 ]  # buffa
+        - [ 169, 170 ]  # toilet
+        - [ 287, 292 ]  # intro audio
+        - [ 300, 307 ]  # menu audio TODO: Check [308, 310]
+      opaque:
+        - 2
+      translations:
+        splash:
+          source: 173
+          other: 313
+
+        loading_dlc:
+          source: 92
+          other: 314
+
+
+mudcar:
+  82.DXR:
+    Internal:
+      members:
+        - 1 # Background
+        - [ 17, 19 ] # Moose
+        - [ 25, 39 ] # Driver and rope
+        - [ 41, 44 ] # Stuck car
+        - [ 49, 57 ] # Buffa
+        - 83
+        - [ 173, 174 ]
+        - [ 200, 202 ]
+      opaque:
+        - 1
+        - 18
+        - 19
+
+plugin:
+  06.DXR:
+    Internal:
+      members:
+        - 153 # Close button
+  66.DXR:
+    Internal:
+      members:
+        - 25 # Background
+        - [ 33, 37 ] # Junk
+        - [ 38, 42 ] # Sounds
+        - [ 51, 56 ] # Sounds
+        - [ 57, 59 ] # Crane
+        - [ 69, 78 ] # Figge
+      opaque:
+        - 25
+
+  PLUGIN.CST:
+    Standalone:
+      members:
+        - 18 # Map
+        - [ 21, 47 ] # Parts (images and data)
+      opaque:
+        - 18
+
+roaddog:
+  85.DXR:
+    Internal:
+      members:
+        - 25 # Background image
+        - [ 26, 34 ] # Salka animation frames
+        - 190 # Audio
+        - [ 200, 201 ] # Audio
+      opaque:
+        - 25
+
+roadthing:
+  00.CXT:
+    Standalone:
+      members:
+        - 446 # Ding sound
+
+  84.DXR:
+    Internal:
+      members:
+        - 25 # Images
+        - 201 # Audio
+      opaque:
+        - 25
+      translations:
+        sound:
+          other: 200
+          source: 201
+roadtree:
+  83.DXR:
+    Internal:
+      members:
+        - [ 1, 3 ] # background and car
+        - [ 13, 15 ] # driver animation
+        - [ 21, 28 ] # Tree
+        - [ 33, 38 ] # Buffa
+        - [ 45, 91 ] # Mulle
+        - [ 93, 97 ] # driver talk animation frames
+        - 99 # driver talk animation
+        - 113
+        - [ 181, 183 ] # Sounds
+        - [ 200, 204 ] # Sounds
+      opaque:
+        - 1
+        - 13
+        - 14
+        - [ 93, 97 ]
+        - 113
+      translations:
+        sound009:
+          other: 204
+          source: 202
+saftfabrik:
+  87.DXR:
+    Internal:
+      members:
+        - [ 15, 18 ] # Gaston head animation
+        - [ 26, 29 ] # Saft animation
+        - 185 # Background sound
+        - [ 200, 206 ] # Audio
+        - 208 # Background image
+      opaque:
+        - [ 15, 18 ]
+        - 208
+
+shared:
+  00.CXT:
+    Standalone:
+      members:
+        - [ 416, 421 ] # Sounds
+        - [ 433, 461 ] # Sounds
+        - [ 469, 474 ]
+        - [ 485, 493 ] # Engine sounds
+
+      translations:
+        engine_sounds:
+          source: [ 485, 493 ]
+          other: [ 429, 437 ]
+        menu_sound:
+          other:
+            - 454
+            - 459
+          source:
+            - 469
+            - 474
+        sounds:
+          source: [ 416, 421 ]
+          other: [ 380, 385 ]
+        sounds2:
+          source: [ 433, 461 ]
+          other: [ 393, 421 ]
+
+  04.DXR:
+    Internal:
+      members:
+        - [ 48, 49 ] # Mailbox audio
+
+solhem:
+  86.DXR:
+    Internal:
+      members:
+        - 1
+        - 3
+        - 21
+        - [ 30, 74 ]
+        - [ 181, 185 ]
+        - [ 200, 206 ]
+      opaque:
+        - 1
+
+sturestortand:
+  88.DXR:
+    Internal:
+      members:
+        - [ 16, 25 ] # Hose animation
+        - [ 32, 46 ] # Sture and background
+        - [ 92, 93 ] # Kids 1
+        - [ 96, 97 ] # Kids 2
+        - [ 100, 101 ] # Kids 3
+        - 181 # Background loop
+        - [ 199, 204 ] # Audio
+      opaque:
+        - 32
+        - [ 33, 38 ] # TODO: Check if this should be opaque
+        - [ 40, 46 ] # TODO: Check if this should be opaque
+        - 92
+        - 93
+        - 96
+        - 97
+        - 100
+        - 101
+ui:
+  00.CXT:
+    Standalone:
+      members:
+        - 97
+        - [ 109, 117 ]
+
+viola:
+  89.DXR:
+    Internal:
+      members:
+        - 1  # Background
+        - [ 18, 20 ] # Viola animation frames
+        - 177 # Audio
+        - [ 200, 202 ] # Audio
+      opaque:
+        - 1
+
+yard:
+  04.DXR:
+    Internal:
+      members:
+        - [ 13, 14 ] # Side door
+        - 16 # Road start
+        - 27 # Off the road
+        - 30 # Off the road
+        - 37 # Background
+        - [ 40, 44 ] # Door/mailbox
+        - 261 # No mail
+        - [ 272, 277 ] # Package and garage full
+        - [ 279, 280 ] # Mail/figge
+      opaque:
+        - [ 16,37 ]
+        - [ 116, 118 ]
+        - [ 228,230 ]
+      translations:
+        background:
+          other: 145
+          source: 37
+        speech:
+          other:
+            - 117
+            - 138
+          source:
+            - 261
+            - 282
+  CDDATA.CXT:
+    Standalone:
+      members:
+        - [ 19, 22 ] # Letters
+        - [ 24, 25 ] # Letter audio carshow/sturestortand
+        - [ 29, 30 ]  # Letter audio Pia/race
+      opaque:
+        - [ 19, 22 ]

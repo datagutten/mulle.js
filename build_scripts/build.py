@@ -5,8 +5,11 @@ import shutil
 import subprocess
 import sys
 import zipfile
+from pathlib import Path
 
 import requests
+from build_scripts.assets import DirectorAssets
+from build_scripts.assets.build_spritesheets import SpriteSheetBuilder
 
 try:
     from git import Repo
@@ -283,9 +286,14 @@ class Build:
             print(e.stderr.decode('utf-8'))
             raise e
 
-    def assets(self, optipng=0):
-        subprocess.run([sys.executable, os.path.join(self.project_folder, 'assets.py'), str(optipng)],
-                       cwd=self.project_folder).check_returncode()
+    def assets(self, optipng: int = 0):
+        config_file = Path(self.script_folder).joinpath('assets', 'assets.yml')
+        assets = DirectorAssets(self.language, Path(self.extract_folder), config_file)
+
+        for sheet in assets.spritesheets():
+            builder = SpriteSheetBuilder(sheet, Path(self.dist_folder).joinpath('assets'), optipng_level=optipng)
+            builder.add_assets(assets.get_spritesheet_assets(sheet))
+            builder.save()
 
 
 if __name__ == '__main__':
