@@ -49,7 +49,7 @@ class LibraryNotFund(DirectorException):
 
 @dataclasses.dataclass
 class Asset:
-    movie: Movie
+    movie: 'Movie'
     library: str
     num: int
     opaque: bool = False
