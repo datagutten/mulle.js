@@ -17,15 +17,33 @@ class CastTypes(Enum):
     bitmap = 1,
 
 
-class AssetException(RuntimeError):
+class DirectorException(RuntimeError):
     pass
+
+
+class MovieException(DirectorException):
+    def __init__(self, movie: 'Movie'):
+        super().__init__()
+        self.movie = movie
+
+
+class MovieNotFound(MovieException):
+    def __str__(self):
+        return f'Movie "{self.movie.name} not found'
+
+
+class AssetException(DirectorException):
+    def __init__(self, asset_obj: 'Asset'):
+        super().__init__()
+        self.asset = asset_obj
 
 
 class AssetNotFound(AssetException):
-    pass
+    def __str__(self):
+        return f'Movie "{self.asset.movie.name} member {self.asset.num} not found'
 
 
-class LibraryNotFund(AssetException):
+class LibraryNotFund(DirectorException):
     pass
 
 
@@ -51,7 +69,7 @@ class Asset:
 
     def _meta(self):
         if str(self.num) not in self.library_meta:
-            raise AssetNotFound(str(self))
+            raise AssetNotFound(self)
         metadata = self.library_meta[str(self.num)]
 
         return metadata
@@ -93,6 +111,8 @@ class Movie:
     @cached_property
     def metadata(self):
         meta_file = self.path.joinpath('metadata.json')
+        if not meta_file.exists():
+            raise MovieNotFound(self)
         with meta_file.open() as fp:
             return json.load(fp)
 
@@ -196,7 +216,8 @@ class DirectorAssets:
                     try:
                         assets.append(
                             self.get_asset(movie, library, member, self.language != 'sv', opaque=member in opaque))
-                    except AssetNotFound:
+                    except AssetNotFound as e:
+                        # raise e
                         continue
 
         return assets
