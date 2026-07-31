@@ -9,7 +9,6 @@ from pathlib import Path
 
 import requests
 from assets import DirectorAssets
-from assets.build_spritesheets import SpriteSheetBuilder
 
 try:
     from git import Repo
@@ -17,6 +16,7 @@ try:
     from shockwaveparser import ShockwaveExtractor
     from topography import build_topography
     from convert_image import convert_image
+    from assets.build_spritesheets import SpriteSheetBuilder
 except ImportError as e:
     if 'download-only' not in sys.argv:
         raise e
