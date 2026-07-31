@@ -291,7 +291,7 @@ class Build:
         assets = DirectorAssets(self.language, Path(self.extract_folder), config_file)
 
         for sheet in assets.spritesheets():
-            builder = SpriteSheetBuilder(sheet, Path(self.dist_folder).joinpath('assets'), optipng_level=optipng)
+            builder = SpriteSheetBuilder(sheet, Path(self.project_folder).joinpath(f'assets_{self.language}'), optipng_level=optipng)
             builder.add_assets(assets.get_spritesheet_assets(sheet))
             builder.save()
 
