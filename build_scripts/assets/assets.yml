@@ -188,6 +188,16 @@ fileBrowser:
           en: [18,33]
 
 garage:
+  00.CXT:
+    Standalone:
+      members:
+        - 84 # Toolbox menu
+      opaque: [ 84 ]
+      translations:
+        menu:
+          source: 84
+          other: 451
+
   03.DXR:
     Internal:
       members:
@@ -478,6 +488,11 @@ ui:
       members:
         - 97
         - [ 109, 117 ]
+        - 122 # Loading
+      translations:
+        loading:
+          source: [122,123]
+          en: [452,453]
 
 viola:
   89.DXR:
