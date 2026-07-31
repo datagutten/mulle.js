@@ -160,10 +160,6 @@ class Build:
         shutil.copytree(os.path.join(self.project_folder, 'data'), os.path.join(self.dist_folder, 'data'),
                         dirs_exist_ok=True)
 
-    def rename(self):
-        rename_script = os.path.join(self.script_folder, 'rename.py')
-        subprocess.run([sys.executable, rename_script, self.extract_folder]).check_returncode()
-
     def download_game(self, show_progress=True):
         if self.language == 'no':
             url = 'https://archive.org/download/bygg-biler-med-mulle-mekk/Bygg%20biler%20med%20Mulle%20Mekk.iso'
@@ -200,7 +196,7 @@ class Build:
             ShockwaveExtractor.main(['-e', '-i', os.path.join(extract_dir, '66.dxr')])
             ShockwaveExtractor.main(['-e', '-i', os.path.join(extract_dir, 'Plugin.cst')])
 
-    def extract_iso(self, extract_content=True, rename=True):
+    def extract_iso(self, extract_content=True):
         import pycdlib
         iso_path = self.download_game(False)
 
@@ -231,9 +227,6 @@ class Build:
                 except Exception as e:
                     print('%s: %s' % (file, str(e)))
                     continue
-
-        if rename and self.language != 'sv':
-            self.rename()
 
     def copy_images(self):
         plugin_parts = [22, 25, 29, 33, 36, 39, 43]
@@ -291,7 +284,8 @@ class Build:
         assets = DirectorAssets(self.language, Path(self.extract_folder), config_file)
 
         for sheet in assets.spritesheets():
-            builder = SpriteSheetBuilder(sheet, Path(self.project_folder).joinpath(f'assets_{self.language}'), optipng_level=optipng)
+            builder = SpriteSheetBuilder(sheet, Path(self.project_folder).joinpath(f'assets_{self.language}'),
+                                         optipng_level=optipng)
             builder.add_assets(assets.get_spritesheet_assets(sheet))
             builder.save()
 
@@ -321,10 +315,6 @@ if __name__ == '__main__':
         build.extract_iso()
         build.download_plugin()
 
-    if 'download-no-rename' in sys.argv:
-        build.extract_iso(rename=False)
-        build.download_plugin()
-
     if 'phaser' in sys.argv:
         build.phaser()
 
@@ -350,6 +340,3 @@ if __name__ == '__main__':
 
     if 'assets-prod' in sys.argv:
         build.assets(7)
-
-    if 'rename' in sys.argv:
-        build.rename()
