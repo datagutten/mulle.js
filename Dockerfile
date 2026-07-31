@@ -36,7 +36,7 @@ RUN python build_scripts/build.py ${GAME_LANG} scores
 RUN python build_scripts/build.py ${GAME_LANG} assets
 
 # Convert and copy UI images
-RUN python build_scripts/build.py ui-images
+RUN python build_scripts/build.py ${GAME_LANG} ui-images
 
 # Build topograhy images
 RUN python build_scripts/topography.py ./cst_out_new/CDDATA.CXT/Standalone ./topography
