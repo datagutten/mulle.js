@@ -67,7 +67,7 @@ jobs:
             SERVER_ADDRESS=wss://server.mulle.datagutten.net
 
       - name: Generate artifact attestation
-        uses: actions/attest-build-provenance@v2
+        uses: actions/attest-build-provenance@v4
         with:
           subject-name: docker.datagutten.net/mulle_js_${{ matrix.language }}
           subject-digest: ${{ steps.push.outputs.digest }}
