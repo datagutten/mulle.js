@@ -155,10 +155,6 @@ class Build:
             shutil.copytree(os.path.join(self.project_folder, folder), destination, dirs_exist_ok=True)
         shutil.copy(os.path.join(self.project_folder, 'src', 'index.html'), self.dist_folder)
 
-    def css(self):
-        import sass
-        sass.compile(dirname=(os.path.join(self.project_folder, 'src'), self.dist_folder))
-
     def copy_data(self):
         shutil.copytree(os.path.join(self.project_folder, 'data'), os.path.join(self.dist_folder, 'data'),
                         dirs_exist_ok=True)
@@ -326,7 +322,6 @@ if __name__ == '__main__':
 
     if 'html_css' in sys.argv:
         build.html()
-        build.css()
 
     if 'ui-images' in sys.argv:
         build.copy_images()

@@ -67,8 +67,7 @@ COPY ./webpack.prod.js .
 RUN npx webpack-cli -c webpack.prod.js
 
 # Build sass
-RUN npm install -g sass
-RUN sass ./src/style.scss ./dist/style.css
+RUN npx sass src/style.scss dist/style.css
 
 FROM httpd:bookworm AS web_run
 EXPOSE 80

@@ -59,5 +59,7 @@ jobs:
       run: poetry run python build_scripts/build.py webpack-prod
     - name: Build phaser
       run: poetry run python build_scripts/build.py phaser
-    - name: Build HTML and CSS
+    - name: Build CSS
+      run: npx sass src/style.scss dist/style.css
+    - name: Build HTML
       run: poetry run python build_scripts/build.py html_css
