@@ -113,12 +113,16 @@ driving:
         - [ 294, 369 ]  # engine
       opaque: [ 25, 26, 53, 54, 57 ]
       translations:
-        #menu:
-        #  source: 53
-        #  other: 321
+        menu:
+          source: 53
+          en: 321
         engine:
           source: [ 294, 369 ]
           nl: [ 238, 289 ]
+          en: [ 238, 313 ]
+        voices:
+          source: [ 233,249 ]
+          en: [ 325, 341 ]
   CDDATA.CXT:
     Standalone:
       members:
@@ -146,33 +150,35 @@ figgeferrum:
       translations:
         audio1:
           source: [ 181,182 ]
+          en: [ 182, 183 ]
           other: [ 177, 178 ]
         audio2:
-          other: [ 195, 201 ]
           source: [ 199, 205 ]
+          en: [ 200, 206 ]
+          other: [ 195, 201 ]
         background:
-          other: 203
           source: 1
+          en: 208
+          other: 203
         can:
-          other: 7
           source: 11
+          en: 12
+          other: 7
         dog:
-          other:
-            - 36
-            - 40
-          source:
-            - 40
-            - 44
+          source: [ 40, 44 ]
+          en: [ 41, 45 ]
+          other: [ 36, 40 ]
+
         dogAnimChart:
-          other: 33
           source: 37
+          en: 38
+          other: 33
+
         neighbor:
-          other:
-            - 12
-            - 23
-          source:
-            - 16
-            - 27
+          source: [ 16, 27 ]
+          en: [ 17, 28 ]
+          other: [ 12, 23 ]
+
 fileBrowser:
   13.DXR:
     Internal:
@@ -184,8 +190,8 @@ fileBrowser:
         - 32
       translations:
         browser:
-          source: [17,32]
-          en: [18,33]
+          source: [ 17,32 ]
+          en: [ 18,33 ]
 
 garage:
   00.CXT:
@@ -474,14 +480,18 @@ sturestortand:
         - [ 199, 204 ] # Audio
       opaque:
         - 32
-        - [ 33, 38 ] # TODO: Check if this should be opaque
-        - [ 40, 46 ] # TODO: Check if this should be opaque
+        - [ 33, 38 ] # Happy Sture
+        - [ 40, 46 ] # Sad Sture
         - 92
         - 93
         - 96
         - 97
         - 100
         - 101
+      translations:
+        all:
+          source: [ 16,204 ]
+          en: [ 17,205 ]
 ui:
   00.CXT:
     Standalone:
@@ -491,7 +501,7 @@ ui:
         - 122 # Loading
       translations:
         loading:
-          source: [122,123]
+          source: [ 122,123 ]
           other: [ 452,453 ]
 
 viola:
