@@ -8,4 +8,4 @@ cst_out_new/
 *.swp
 *.pyc
 /bin
-/build_scripts/iso
+iso
