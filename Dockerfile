@@ -19,7 +19,7 @@ WORKDIR /build
 ENV PYTHONPATH=/build
 # Copy build scripts
 COPY ./build_scripts ./build_scripts
-COPY ./audiosprite ./audiosprite
+COPY build_scripts/assets/audiosprite ./audiosprite
 
 # Copy game data
 COPY --from=iso mullebil_${GAME_LANG}.iso ./iso/mullebil_${GAME_LANG}.iso
