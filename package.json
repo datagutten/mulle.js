@@ -34,10 +34,7 @@
 		"ws": "^8"
 	},
 	"dependencies": {
-		"colors": "^1.1.2",
 		"maxrects-packer": "^1.2.0",
-		"moment": "^2.20.1",
-		"typescript": "^2.7.2",
 		"webpack-dev-server": "^6"
 	}
 }
