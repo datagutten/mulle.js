@@ -6,7 +6,7 @@ from typing import List
 from PyTexturePacker import ImageRect, Packer
 from PyTexturePacker import Utils as PyTexturePackerUtils
 
-from audiosprite import AudioSprite
+from build_scripts.assets.audiosprite import AudioSprite
 from build_scripts.assets.assets_yaml import Asset
 from build_scripts.convert_image import convert_image
 from build_scripts.parse_animation_chart import parse_animation_chart
