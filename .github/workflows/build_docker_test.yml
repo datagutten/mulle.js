@@ -1,0 +1,47 @@
+name: Test Docker image build
+
+on:
+  pull_request:
+  workflow_dispatch:
+  push:
+    branches-ignore:
+      - master
+
+jobs:
+  build_docker_test:
+    name: Test Docker image build
+    runs-on: ubuntu-latest
+
+    strategy:
+      fail-fast: false
+      matrix:
+        language: [ no, sv, da, fi, nl ]
+
+    steps:
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
+
+      - name: Check out the repo
+        uses: actions/checkout@v7
+
+      - name: Cache game iso
+        uses: actions/cache@v4
+        id: iso
+        with:
+          path: iso/mullebil_${{ matrix.language }}.iso
+          key: game-iso-${{ matrix.language }}-${{ hashFiles('iso/mullebil_*.iso') }}
+          restore-keys: game-iso-${{ matrix.language }}-
+
+      - name: Download game
+        run: python build_scripts/build.py ${{ matrix.language }} download-only
+
+      - name: Build and push Docker image
+        id: push
+        uses: docker/build-push-action@v6
+        with:
+          push: false
+          build-contexts: iso=iso
+          build-args: |
+            GAME_LANG=${{ matrix.language }}
+            OPTIPNG_LEVEL=0
+            SERVER_ADDRESS=wss://server.mulle.datagutten.net
