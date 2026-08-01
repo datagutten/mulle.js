@@ -14,7 +14,7 @@ dependencies = [
     "audioop-lts (>=0.2.1,<0.3.0); python_version >= '3.13'",
     "pycdlib (>=1.10.0,<1.11.0)",
     "gitpython (>=3.1.44,<4.0.0)",
-    "requests (>=2.32.4,<3.0.0)",
+    "requests (>=2.34.2,<3.0.0)",
     "pyyaml (>=6.0.3,<7.0.0)",
     "lxml (>=6.1.1,<7.0.0)",
     "shockwaveparser @ git+https://github.com/datagutten/ShockwaveParser.git"
