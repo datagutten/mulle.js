@@ -1,13 +1,15 @@
 import json
 import subprocess
+import sys
 from pathlib import Path
 from typing import List
 
 from PyTexturePacker import ImageRect, Packer
 from PyTexturePacker import Utils as PyTexturePackerUtils
 
-from build_scripts.assets.audiosprite import AudioSprite
-from build_scripts.assets.assets_yaml import Asset
+sys.path.append(str(Path(__file__).resolve().parent.parent.parent))
+from .audiosprite import AudioSprite
+from .assets_yaml import Asset
 from build_scripts.convert_image import convert_image
 from build_scripts.parse_animation_chart import parse_animation_chart
 
@@ -24,7 +26,7 @@ class SpriteSheetBuilder:
     soundSprite: dict
     strings: dict
     animations: dict
-    _image_counter=1
+    _image_counter = 1
 
     def __init__(self, name: str, output_path: Path, optipng_level: int = 0):
         self.name = name
@@ -84,7 +86,7 @@ class SpriteSheetBuilder:
         image_rect.hash = member.meta['imageHash']
 
         self._image_rects.append(image_rect)
-        self._image_counter+=1
+        self._image_counter += 1
         return image_rect
 
     def add_audio_sprite(self, member: Asset):
