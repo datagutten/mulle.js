@@ -30,7 +30,7 @@
 		"terser-webpack-plugin": "^5.3.11",
 		"webpack": "^5.82",
 		"webpack-cli": "^6",
-		"webpack-merge": "^5.7.3",
+		"webpack-merge": "^6.0.1",
 		"ws": "^8"
 	},
 	"dependencies": {
