@@ -5,11 +5,16 @@ import MulleActor from '../objects/actor'
 // import MulleAudio from '../objects/audio'
 
 import MulleSave from '../struct/savedata'
+import DirectorHelper from '../objects/DirectorHelper'
 
 class MenuState extends MulleState {
   preload () {
     // this.game.load.pack('menu', 'assets/menu.json', null, this);
     this.game.load.pack('menu', 'assets/menu.json', null, this)
+  }
+
+  toilet() {
+    //this.game.state.start('lbstart')
   }
 
   create () {
@@ -32,6 +37,9 @@ class MenuState extends MulleState {
     var mulleMouth = new MulleActor(this.game, 139, 296, 'mulleMenuMouth')
     mulleMouth.animations.play('idle')
     this.game.add.existing(mulleMouth)
+
+    const toilet = DirectorHelper.button(this.game, 550, 375, this.toilet, this, '10.DXR', 170, 169)
+    this.game.add.existing(toilet)
 
     this.nameInput = document.createElement('input')
     this.nameInput.style.position = 'absolute'
