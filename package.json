@@ -34,7 +34,7 @@
 		"ws": "^8"
 	},
 	"dependencies": {
-		"maxrects-packer": "^1.2.0",
+		"maxrects-packer": "^2.7.3",
 		"webpack-dev-server": "^6"
 	}
 }
