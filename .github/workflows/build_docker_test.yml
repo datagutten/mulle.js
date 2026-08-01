@@ -19,13 +19,13 @@ jobs:
 
     steps:
       - name: Set up Docker Buildx
-        uses: docker/setup-buildx-action@v3
+        uses: docker/setup-buildx-action@v4
 
       - name: Check out the repo
         uses: actions/checkout@v7
 
       - name: Cache game iso
-        uses: actions/cache@v4
+        uses: actions/cache@v6
         id: iso
         with:
           path: iso/mullebil_${{ matrix.language }}.iso
@@ -35,7 +35,7 @@ jobs:
       - name: Download game
         run: python build_scripts/build.py ${{ matrix.language }} download-only
 
-      - name: Build and push Docker image
+      - name: Build Docker image
         id: push
         uses: docker/build-push-action@v6
         with:
