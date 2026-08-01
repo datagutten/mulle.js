@@ -53,10 +53,11 @@ jobs:
         restore-keys: bin-
 
     - run: npm install
-    - run: pip install -r requirements.txt
+    - run: pip install poetry
+    - run: poetry update
     - name: Build webpack
-      run: python build_scripts/build.py webpack-prod
+      run: poetry run python build_scripts/build.py webpack-prod
     - name: Build phaser
-      run: python build_scripts/build.py phaser
+      run: poetry run python build_scripts/build.py phaser
     - name: Build HTML and CSS
-      run: python build_scripts/build.py html_css
+      run: poetry run python build_scripts/build.py html_css
