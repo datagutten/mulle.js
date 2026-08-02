@@ -74,20 +74,20 @@ EXPOSE 80
 ARG GAME_LANG=sv
 WORKDIR /usr/local/apache2/htdocs
 
-# Copy built assets
-COPY --from=builder_py /build/assets_${GAME_LANG} ./assets
-COPY --from=builder_js /build/dist .
-COPY --from=builder_py /build/dist .
-
-# Copy topograpchy sprite sheet
-RUN mkdir ./assets/topography
-COPY --from=builder_js /build/topography/topography.json ./assets/topography
-COPY --from=builder_js /build/topography/topography.png ./assets/topography
-
 # Copy static files from source
 COPY ./src/index_cdn.html ./index.html
 COPY ./data ./data
 COPY ./info ./info
 COPY ./progress ./progress
+
+# Copy topograpchy sprite sheet
+RUN mkdir -p assets/topography
+COPY --from=builder_js /build/topography/topography.json ./assets/topography
+COPY --from=builder_js /build/topography/topography.png ./assets/topography
+
+# Copy built assets
+COPY --from=builder_js /build/dist .
+COPY --from=builder_py /build/assets_${GAME_LANG} ./assets
+COPY --from=builder_py /build/dist .
 
 RUN echo ${GAME_LANG}
