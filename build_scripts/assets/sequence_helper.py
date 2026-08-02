@@ -57,6 +57,8 @@ def split_sequences(data) -> List[str]:
 def parse_animations(data: str):
     action_data = convert_sequence(data)
     animations = {}
+    if not 'Actions' in action_data:
+        raise RuntimeError("Invalid animation, Actions not found")
     for action, frames in action_data['Actions'].items():
         animations[action] = frames
         frames_resolved = []
