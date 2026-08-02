@@ -1,6 +1,7 @@
 import json
 import subprocess
 import sys
+from json import JSONDecodeError
 from pathlib import Path
 from typing import List
 
@@ -195,7 +196,7 @@ class SpriteSheetBuilder:
             elif member.cast_type == 3:
                 try:
                     self.add_animation(member)
-                except RuntimeError:  # Parsing failed
+                except (RuntimeError, JSONDecodeError):  # Parsing failed
                     self.add_string(member)
             elif member.cast_type == 6:
                 self.add_audio_sprite(member)
