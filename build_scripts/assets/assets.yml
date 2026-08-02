@@ -242,6 +242,7 @@ junk:
   02.DXR:
     Internal:
       members:
+        - [ 25, 26 ] # Animations
         - 66 # Pile
         - [ 68, 72 ] # Pile
         - [ 85, 96 ] # Doors
@@ -300,7 +301,10 @@ menu:
         - [ 115, 123 ]  # face
         - [ 125, 138 ]  # mulle
         - [ 156, 163 ]  # buffa
+        - 165 # Animation
         - [ 169, 170 ]  # toilet
+        - [ 217, 218 ]
+        - 237 # Animation
         - [ 287, 292 ]  # intro audio
         - [ 300, 307 ]  # menu audio TODO: Check [308, 310]
       opaque:

@@ -85,6 +85,10 @@ class Asset:
         return self.meta['castType']
 
     @cached_property
+    def name(self):
+        return self.meta['name']
+
+    @cached_property
     def path(self):
         """
         Asset base path

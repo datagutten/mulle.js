@@ -11,7 +11,7 @@ sys.path.append(str(Path(__file__).resolve().parent.parent.parent))
 from .audiosprite import AudioSprite
 from .assets_yaml import Asset
 from build_scripts.convert_image import convert_image
-from build_scripts.parse_animation_chart import parse_animation_chart
+from . import sequence_helper
 
 
 class SpriteSheetBuilder:
@@ -54,9 +54,11 @@ class SpriteSheetBuilder:
         self.strings.setdefault(member.movie.name, {})[member.original_num] = string
 
     def add_animation(self, member: Asset):
-        string = member.get_text()
-        self.animations.setdefault(member.movie.name, {})[member.original_num] = parse_animation_chart(
-            string)
+        sequences = sequence_helper.split_sequences(member.get_text())
+        if len(sequences) > 1:
+            self.animations[member.name] = [sequence_helper.parse_animations(sequence) for sequence in sequences]
+        else:
+            self.animations[member.name] = sequence_helper.parse_animations(sequences[0])
 
     def add_image_asset(self, member: 'Asset'):
         if member.file().suffix != '.png':
