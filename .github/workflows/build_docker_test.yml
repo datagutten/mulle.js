@@ -37,7 +37,7 @@ jobs:
 
       - name: Build Docker image
         id: push
-        uses: docker/build-push-action@v6
+        uses: docker/build-push-action@v7
         with:
           push: false
           build-contexts: iso=iso
