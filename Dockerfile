@@ -42,7 +42,7 @@ RUN python build_scripts/build.py ${GAME_LANG} ui-images
 RUN python build_scripts/topography.py ./cst_out_new/CDDATA.CXT/Standalone ./topography
 
 
-FROM node:24 AS builder_js
+FROM node:26 AS builder_js
 ARG SERVER_ADDRESS
 ENV SERVER_ADDRESS=${SERVER_ADDRESS}
 
