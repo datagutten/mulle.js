@@ -29,7 +29,7 @@
 		"sass": "^1.102.0",
 		"terser-webpack-plugin": "^5.3.11",
 		"webpack": "^5.82",
-		"webpack-cli": "^6",
+		"webpack-cli": "^7",
 		"webpack-merge": "^6.0.1",
 		"ws": "^8"
 	},
