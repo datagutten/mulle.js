@@ -4,7 +4,7 @@ ARG GAME_LANG=sv
 COPY ./iso/mullebil_${GAME_LANG}.iso mullebil_${GAME_LANG}.iso
 COPY ./iso/plugin.exe plugin.exe
 
-FROM python:3.14 AS builder_py
+FROM python:3.15 AS builder_py
 # Install dependencies
 RUN apt-get update && apt-get -y install ffmpeg optipng
 RUN pip install --upgrade pip poetry poetry-plugin-export
